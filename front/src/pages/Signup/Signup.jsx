@@ -17,7 +17,7 @@ const SInputLayout = css`
 `;
 
 function Signup(props) {
-
+    //Route이동시 사용(Link or navigate)
     const navigate = useNavigate();
 
     const [ signupUser, setSignupUser ] = useState({
@@ -40,15 +40,23 @@ function Signup(props) {
             params: {
                 username: signupUser.username
             }
+            
         }
-        axios.get("http://localhost:8080//servlet_study_cheawon/auth/signup/duplicate/username", option).then((response) => {
+        axios.get("http://localhost:8080//servlet_study_cheawon/auth/signup/duplicate/username", option)
+        .then((response) => {
             //axios.post(servlet, 객체)하면 자동으로 Json변경을 해줌
-            axios.post("http://localhost:8080//servlet_study_cheawon/auth/signup", signupUser).then((response) => {
-                alert(response.data);
-                navigate('/sinin');
-            })
+            console.log(response);
+            const isDuplicateUsername = response.data;
+
+            if (isDuplicateUsername) {
+                //아이디가 중복되었다.
+                
+            }else {
+                //사용 가능한 아이디.
+                
+            }
         }).catch((error) => {
-            alert("중복된 아이디입니다.");
+            
         })
     }
 
@@ -56,16 +64,16 @@ function Signup(props) {
         <>
             <h1>회원가입</h1>
             <div css={SInputLayout}>
-                <input type="text" name='username' placeholder='username' onChange={handleInputChange}/>
+                <input type="text" name="username" placeholder="username" onChange={handleInputChange}/>
             </div>
             <div css={SInputLayout}>
-                <input type="password" name='password' placeholder='password' onChange={handleInputChange}/>
+                <input type="password" name="password" placeholder="password" onChange={handleInputChange}/>
             </div>
             <div css={SInputLayout}>
-                <input type="text" name='name' placeholder='name' onChange={handleInputChange}/>
+                <input type="text" name="name" placeholder="name" onChange={handleInputChange}/>
             </div>
             <div css={SInputLayout}>
-                <input type="text" name='email' placeholder='email' onChange={handleInputChange}/>
+                <input type="text" name="email" placeholder="email" onChange={handleInputChange}/>
             </div>
             <div>
                 <button onClick={handleSubmitClick}>가입하기</button>
