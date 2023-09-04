@@ -16,7 +16,9 @@ import entity.User;
 import utils.JsonParseUtil;
 import utils.ResponseUtil;
 
-
+/**
+ * 인증은 get메소드를 사용해야 하지만 보안상의 문제로 url에 정보가 표시되는 get을 쓰지 않고 post를 사용하여 body에 담아 보낸다(get의 예외)
+ */
 @WebServlet("/auth/signin")
 public class SigninServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
