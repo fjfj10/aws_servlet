@@ -22,9 +22,9 @@ public class CrosFilter extends HttpFilter implements Filter {
 		
 		// Origin: 요청을 보낸쪽 ("Access-Control-Allow-Origin", "허용할 사이트");
 		httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
-		httpServletResponse.setHeader("Access-Control-Allow-Headers", "x-requested-with, origin, content-type, accept");
+		httpServletResponse.setHeader("Access-Control-Allow-Headers", "*");
 		// 허용할 메소드 종류
-		httpServletResponse.setHeader("Access-Control-Allow-Methods", "POST,GET,PUT,OPTIONS,DELETE");
+		httpServletResponse.setHeader("Access-Control-Allow-Methods", "*");
 		// cross-origin에서 이 Header를 유지할 기간(초단위)
 		httpServletResponse.setHeader("Access-Control-Max-Age", "3600");
 		
