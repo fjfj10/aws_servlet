@@ -24,7 +24,7 @@ import utils.ResponseUtil;
  * 회원가입 -> 사용자 정보 데이터의 추가를 의미
  * 추가 -> Create, 데이터 베이스에 정보를 insert -> Post 요청
  *Post 메소드의 특징
- *1. 요청 시 서버로 전당되어지는 데이터가 주소창에 표시되지 않는다. 
+ *1. 요청 시 서버로 전달되어지는 데이터가 주소창에 표시되지 않는다. 
  * -> GET: http://localhost:8080/category?categoryName=한식
  * -> POST: http://localhost:8080/category (BODY에 데이터를 담아 서버로 전송)
  *2. 전송 데이터의 용량 제한이 없다.
