@@ -46,7 +46,7 @@ function Signup(props) {
         }
         // callback -> promise -> async/await로 변경
         const signup = async () => {
-            let response = await axios.get("http://localhost:8080//servlet_study_cheawon/auth/signup/duplicate/username", option);
+            let response = await axios.get("http://localhost:8080/servlet_study_cheawon/auth/signup/duplicate/username", option);
             
             if (response.data) {
                 alert("중복되는 아이디입니다.")
@@ -55,7 +55,7 @@ function Signup(props) {
             
             // 회원가입 실패 시 오류 처리
             try{
-                response = await axios.post("http://localhost:8080//servlet_study_cheawon/auth/signup", signupUser)
+                response = await axios.post("http://localhost:8080/servlet_study_cheawon/auth/signup", signupUser)
                 if (!response.data) {
                     throw new Error(response);
                 }
@@ -78,13 +78,13 @@ function Signup(props) {
 
         //     if (isDuplicateUsername) {
         //         //아이디가 중복되었다.
-                
+        
         //     }else {
         //         //사용 가능한 아이디.
-                
+        
         //     }
         // }).catch((error) => {
-            
+        
         // })
     }
 

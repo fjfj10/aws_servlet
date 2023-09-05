@@ -17,13 +17,14 @@ function Signin(props) {
     const handleSigninClick = async () => {
         try {
             // 조회여도 인증과 같은 일을 할때는 get이아닌 post를 사용한다 => get일때는 url에 내용이 나타나기 때문에 보안취약
-            const response = await axios.post("http://localhost:8080//servlet_study_cheawon/auth/signin", signinInput);
+            const response = await axios.post("http://localhost:8080/servlet_study_cheawon/auth/signin", signinInput);
 
-            if (!response.data) {
+            if (!response.data.token) {
                 alert("로그인 실패");
                 return;
             }
-
+            localStorage.setItem("token", response.data?.token);
+            
             alert("환영합니다.");
             
         } catch (error) {
