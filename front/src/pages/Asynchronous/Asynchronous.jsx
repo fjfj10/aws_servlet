@@ -1,5 +1,9 @@
 import React from 'react';
 
+async function printUser() {
+
+}
+
 function Asynchronous(props) {
     
     /* 
@@ -71,11 +75,41 @@ function Asynchronous(props) {
             console.log(error);
         });
     }
+
+    const handleClick3 = () => {
+    
+        const printUser2 = () => {
+            return new Promise((resolve, reject) => {
+                resolve("유저2");
+                reject(new Error("오류2"));
+            });
+        }
+
+        printUser2().then(r => console.log(r));     //비동기
+
+        const printUser = async () => {
+            try {
+                // awaiy은 async안에서만 사용 가능
+                await printUser2().then((r) => {    // 비동기안에서 비동기를 동기처리할 때 await을 사용(데이터가 갔다와야지만 다음걸 할 수 있는 경우 await밑의 코드 등장 X)
+                    console.log(r);
+                });
+                // 예외 처리
+                throw new Error("오류처리");
+            } catch (error) {
+                console.log(error);
+            }
+            return "유저1";        // resolve부분이 리턴된다
+        }
+
+        printUser().then(r => console.log(r));
+
+    }
     
     return (
         <div>
             <button onClick={handleClick}>클릭</button>
             <button onClick={handleClick2}>클릭2</button>
+            <button onClick={handleClick3}>클릭3</button>
         </div>
     );
 }
