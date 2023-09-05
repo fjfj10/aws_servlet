@@ -22,7 +22,7 @@ import utils.ResponseUtil;
 
 /**
  * 인증은 get메소드를 사용해야 하지만 보안상의 문제로 url에 정보가 표시되는 get을 쓰지 않고 post를 사용하여 body에 담아 보낸다(get의 예외)
- * 응답으로 토큰 발급
+ * 응답으로 토큰 발급 이후 발급된 토큰으로 인증
  */
 @WebServlet("/auth/signin")
 public class SigninServlet extends HttpServlet {
@@ -38,13 +38,11 @@ public class SigninServlet extends HttpServlet {
 				String token = UUID.randomUUID().toString();
 				SecurityContextHolder.addAuth(new Authentication(user, token));
 				responseData.put("token", token);
-				ResponseUtil.response(response).of(200).body(responseData);
-				
-				return;
+				break;
 			}
 		}
-		// 401 = 인증되지 않았다.
-		ResponseUtil.response(response).of(401).body(responseData);
+
+		ResponseUtil.response(response).of(200).body(JsonParseUtil.toJson(responseData));
 	}
 
 }
