@@ -12,6 +12,7 @@ import EditProfile from './pages/EditProfile/EditProfile';
 const SCommon = css`
   * {
     box-sizing: border-box;
+    color: #333;
   }
 `;
 
